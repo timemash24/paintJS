@@ -5,6 +5,7 @@ const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
+
 const saveBtn = document.getElementById("jsSave");
 
 const INITIAL_COLOR = "#2c2c2c";
@@ -90,11 +91,13 @@ function handleCM(event) {
 
 // 저장 기능
 function handleSaveClick() {
-  const image = canvas.toDataURL();
-  const link = document.createElement("a");
-  link.href = image;
-  link.download = "PaintJS[EXPORT]";
-  link.click();
+  if (window.confirm("저장하시겠습니까?")) {
+    const image = canvas.toDataURL();
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "PaintJS[EXPORT]";
+    link.click();
+  }
 }
 
 if (canvas) {

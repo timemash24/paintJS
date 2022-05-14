@@ -5,11 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>PaintJS</title>
   </head>
   <body>
     <canvas id="jsCanvas" class="canvas"></canvas>
     <div class="controls">
+      <div class="controls__modes">
+        <button class="controls__mode" id="jsPaint">
+          <i class="fa-solid fa-paintbrush"></i></button
+        ><button class="controls__mode" id="jsFill">
+          <i class="fa-solid fa-fill-drip"></i></button
+        ><button class="controls__mode" id="jsEraser">
+          <i class="fa-solid fa-eraser"></i>
+        </button>
+      </div>
       <div class="controls__range">
         <input
           type="range"
@@ -21,7 +37,7 @@
         />
       </div>
       <div class="controls__btns">
-        <button id="jsMode">Fill</button>
+        <button id="jsMode">Paint</button>
         <button id="jsSave">Save</button>
       </div>
       <div class="controls__colors" id="jsColors">
