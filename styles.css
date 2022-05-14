@@ -94,6 +94,43 @@ body {
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.controls__colors #jsRColor {
+  background-image: linear-gradient(
+    225deg,
+    #ff91e5 0,
+    #ff8ed4 3.33%,
+    #ff8dc2 6.67%,
+    #ff8eb0 10%,
+    #ff919e 13.33%,
+    #ff958e 16.67%,
+    #ff9b7e 20%,
+    #ffa16f 23.33%,
+    #ffa861 26.67%,
+    #ffaf55 30%,
+    #ffb64a 33.33%,
+    #ffbd42 36.67%,
+    #f7c33c 40%,
+    #e7c93a 43.33%,
+    #d7cf3c 46.67%,
+    #c5d442 50%,
+    #b2d84b 53.33%,
+    #9edc57 56.67%,
+    #88e064 60%,
+    #6fe373 63.33%,
+    #4ee583 66.67%,
+    #02e794 70%,
+    #00e9a6 73.33%,
+    #00eab9 76.67%,
+    #00eacb 80%,
+    #00ebde 83.33%,
+    #00ebf0 86.67%,
+    #00eaff 90%,
+    #00e9ff 93.33%,
+    #00e8ff 96.67%,
+    #00e6ff 100%
+  );
+}
+
 .controls .controls__range {
   margin-bottom: 30px;
 }

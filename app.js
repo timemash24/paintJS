@@ -3,14 +3,18 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
+const randomColor = document.getElementById("jsRColor");
 const range = document.getElementById("jsRange");
-const mode = document.getElementById("jsMode");
-
+const paint = document.getElementById("jsPaint");
+const fill = document.getElementById("jsFill");
+const erase = document.getElementById("jsErase");
+const clearBtn = document.getElementById("jsClear");
 const saveBtn = document.getElementById("jsSave");
 
 const INITIAL_COLOR = "#2c2c2c";
 const CANVAS_SIZE = 700;
 
+// 캔버스 객체 위에 그리기 가능하도록 크기 설정
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
@@ -59,25 +63,36 @@ function handleColorClick(event) {
   ctx.fillStyle = color;
 }
 
+function handleRandomColor() {
+  const random = Math.floor(Math.random()*16777215).toString(16);
+  console.log(random);
+  ctx.strokeStyle = "#" + random;
+  ctx.fillStyle = "#" + random;
+}
+
 // 브러쉬 크기 변경
 function handeleRangeChange(event) {
   const size = event.target.value;
   ctx.lineWidth = size;
 }
 
-// 채우기, 그리기 전환
-function handleModeClick() {
-  if (filling) {
-    filling = false;
-    mode.innerText = "Fill";
-  } else {
-    filling = true;
-    mode.innerText = "Paint";
-    ctx.fillStyle = ctx.strokeStyle;
-  }
+// 그리기 버튼
+function handlePaintClick() {
+  if (filling) filling = false;
 }
 
-// 캔버스 객체 위에 그리기 가능하도록 크기 설정
+// 채우기 버튼
+function handleFillClick() {
+  if (!filling) filling = true;
+}
+
+// 지우기
+function handleEraseClick() {
+  ctx.strokeStyle = "white";
+  if (filling) filling = false;
+}
+
+// 채우기 실행
 function handleCanvasClick() {
   if (filling) {
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
@@ -89,9 +104,19 @@ function handleCM(event) {
   event.preventDefault();
 }
 
+// 초기화 기능
+function handleClearClick() {
+  if (window.confirm("그림판을 초기화하시겠습니까?")) {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    ctx.fillStyle = INITIAL_COLOR;
+    ctx.strokeStyle = INITIAL_COLOR;
+  }
+}
+
 // 저장 기능
 function handleSaveClick() {
-  if (window.confirm("저장하시겠습니까?")) {
+  if (window.confirm("그림을 저장하시겠습니까?")) {
     const image = canvas.toDataURL();
     const link = document.createElement("a");
     link.href = image;
@@ -115,12 +140,28 @@ if (colors) {
   );
 }
 
+if(randomColor) {
+  randomColor.addEventListener("click", handleRandomColor);
+}
+
 if (range) {
   range.addEventListener("input", handeleRangeChange);
 }
 
-if (mode) {
-  mode.addEventListener("click", handleModeClick);
+if (paint) {
+  paint.addEventListener("click", handlePaintClick);
+}
+
+if (fill) {
+  fill.addEventListener("click", handleFillClick);
+}
+
+if (erase) {
+  erase.addEventListener("click", handleEraseClick);
+}
+
+if (clearBtn) {
+  clearBtn.addEventListener("click", handleClearClick);
 }
 
 if (saveBtn) {
